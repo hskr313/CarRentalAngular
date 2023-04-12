@@ -1,0 +1,16 @@
+<ul class="pagination center-align">
+  <li class="{{isFirstPage ? 'disabled' : ''}}">
+    <a (click)="previousPage()">
+      <i class="material-icons">chevron_left</i>
+    </a>
+  </li>
+  <li *ngFor="let i of pages"
+      [ngClass]="{ 'active': i === currentPageNumber }">
+    <a (click)="setPage(i)">{{i}}</a>
+  </li>
+  <li class="{{isLastPage ? 'disabled' : ''}}">
+    <a (click)="nextPage()">
+      <i class="material-icons">chevron_right</i>
+    </a>
+  </li>
+</ul>

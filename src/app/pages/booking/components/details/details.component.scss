@@ -1,0 +1,31 @@
+.detail-container {
+    height: 540px;
+    display: grid;
+    grid-template-rows: 20% 80%;
+}
+
+.description {
+    grid-row: 1;
+}
+
+.detail {
+    grid-row: 2;
+    overflow-y: scroll;
+}
+
+.car-detail{
+    justify-items: center;
+}
+
+.border-right{
+    border-right: solid 2px;
+}
+
+.box {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.box *{
+    justify-items: center;
+}

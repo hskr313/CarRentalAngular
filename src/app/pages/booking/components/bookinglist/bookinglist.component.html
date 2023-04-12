@@ -1,0 +1,58 @@
+<div class="local-container">
+    <div class="header">
+        <div class="row" style="margin-bottom:-20px; justify-content: center;">
+            <div class="col s12">
+                <h5>list of bookings</h5>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div *ngIf="bookingList">
+                <ul  style="padding: 10px;" >
+                    <li class="card booking-detail" style="padding-right: 5px;" *ngFor="let booking of paginatedData; let i = index">
+                        <div class="row valign-wrapper">
+    
+                            <!-- image de voiture -->
+                            <div class="col s1 border-right">
+                                <i class="material-icons" style="font-size: 65px;">event_note</i>
+                            </div>
+    
+                            <!-- informations relatives -->
+                            <div class="col s3 border-right">
+                                Booking: {{booking.id}} <br>
+                                removal: {{booking.removal}} <br>
+                                Theoric restitution: {{booking.theoricRestitution}} <br>
+                                restitution: {{booking.restitution}}
+                            </div>
+    
+                            <!-- descriptions -->
+                            <div class="col s4 border-right">
+                                Car: {{booking.car.id}} <br>
+                                Customer: {{booking.customer.id}} <br>
+                                reservation Status : {{booking.reservStatus}}
+                            </div>
+    
+                            <!-- butons d'actions -->
+                            <div class="col s4">
+                                <div class="row valign-wrapper" style="align-items: baseline; text-align: center;">
+                                    <div class="col s4" style="padding-top: 20px;">
+                                        <a (click)="udpateOne(booking.id)" class="btn-floating "><i class="material-icons left">edit</i></a>                     
+                                    </div>
+                                    <div class="col s4">
+                                        <a (click)="deleteOne(booking.id)" class="btn-floating red"><i class="material-icons left">delete_forever</i>delete</a>                                
+                                    </div>
+                                    <div class="col s4">
+                                        <a (click)="details(booking.id)" class="btn-floating"><i class="material-icons left">library_books</i>details</a>                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li> 
+                
+                </ul>
+            </div>    
+        </div> 
+    </div>
+    <app-pagination [pageSize]="pageSize" [totalItems]="totalItems" (pageChange)="onPageChange($event)"></app-pagination>
+</div>

@@ -1,0 +1,19 @@
+<div *ngIf="customer">
+    <div class="row box">
+        <div class="col s1 border-right">
+            <i class="material-icons" style="font-size: 65px;">person_outline</i>
+        </div>
+        <div class="col s3 border-right">
+            Customer: {{customer.id}} <br>
+            firstname: {{customer.firstname}} <br>
+            lastname: {{customer.lastname}}
+        </div>
+
+        <div class="col s4 border-right">
+            City: {{customer.address.city}} <br>
+            Street: {{customer.address.street}} <br>
+            Number: {{customer.address.number}} <br>
+            Postal Code: {{customer.address.postalCode}}
+        </div>
+    </div>
+</div>

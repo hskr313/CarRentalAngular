@@ -1,0 +1,76 @@
+<form class="col s12" [formGroup]="fg" (ngSubmit)="submit()">
+    <div class="row">
+        <div class="input-field col s6">
+            <input placeholder="Buy Price" formControlName="buyPrice" id="buyPrice" type="number" class="validate">
+        </div>
+        <div class="input-field col s6">
+            <input placeholder="Buy Date" matDatePicker formControlName="buyDate" type="text" class="validate datepicker" (mchange)="logDate($event)">
+            <!-- <label>Buy Date</label> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input formControlName="km" type="number" id="km" class="validate">
+            <label for="km">Kilometers</label>
+        </div>
+        <div class="input-field col s6">
+            <input formControlName="supplier" type="text" class="validate">
+            <label>Supplier</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="row">
+                <p>
+                    <label>
+                      <input formControlName="repair" type="checkbox" value="true"/>
+                      <span>Reparation</span>
+                    </label>
+                </p>
+            </div>
+        </div>
+        <div class="col s6" *ngIf="fg.get('repair')?.value" >
+            <label >
+                <input matDatePicker formControlName="returnDate" type="text" class="validate datepicker" (mchange)="logReturn($event)">
+                <span>Return Date</span>
+            </label>
+        </div>
+    </div>
+    <ng-container formGroupName="model">
+        <div class="row">
+            <div class="col s4 input-field">
+                <input type="text" id="brand" formControlName="brand">
+                <label for="brand">Brand</label>
+            </div>
+            <div class="col s4 input-field">
+                <input type="text" id="type" formControlName="type">
+                <label for="type">Type</label>
+            </div>
+            <div class="col s4 input-field">
+                <input type="number" id="power" class="valdiate" formControlName="power">
+                <label for="power">Power</label>
+            </div>
+        </div>
+        <ng-container formArrayName="options">
+            <ng-container *ngFor="let control of optionsArray.controls; let i = index" [formGroupName]="i">
+
+                <div class="row">
+                    <div class="input-field col s10">
+                        <label for="option">Option {{i+1}}</label>
+                        <input type="text" formControlName="option" id="option" name="option">
+                    </div>
+                    <div class="col s2">
+                        <button class="btn-floating red" (click)="removeControl(i)"><i class="material-icons">delete</i></button>
+                    </div>
+                </div>
+            </ng-container>
+            <button class="btn" type="button" (click)="addControl()">add options</button>
+        </ng-container>
+    </ng-container>
+    <div class="row">
+        <div class="col s6 offset-s6">
+            <button (click)="cancel()" class="btn-large red" type="button" style="margin-right: 10px;">cancel</button>
+            <button class="btn-large" type="submit" [disabled]="this.fg.invalid">save</button>
+        </div>
+    </div>    
+</form>

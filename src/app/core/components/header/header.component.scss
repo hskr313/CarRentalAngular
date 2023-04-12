@@ -1,0 +1,23 @@
+.header-content {
+    display: grid;
+    grid-template-columns: 70% 15% 15%;
+    align-items: center;
+}
+.searchbar {
+    grid-column: 1;
+}
+
+.name {
+    grid-column: 2;
+    justify-self: end;
+}
+
+.logo{
+    grid-column: 3;
+    justify-self: end;
+}
+
+i {
+    font-size: 3em;
+    color: #457b9d;
+}

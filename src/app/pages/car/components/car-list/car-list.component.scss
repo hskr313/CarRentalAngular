@@ -1,0 +1,24 @@
+.car-detail{
+    justify-items: center;
+}
+
+.local-container {
+    height: 540px;
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+}
+
+.header {
+    grid-row: 1;
+}
+
+.content {
+    grid-row: 2;
+    overflow-y: scroll;
+}
+
+.pagination {
+    grid-row: 3;
+    text-align: center;
+    vertical-align: bottom;
+}
